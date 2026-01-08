@@ -201,10 +201,10 @@ fn render(
         for _ in 0..(C_GRID_SIZE.y - 7) {
             let _ = write!(out, "\r\n");
         }
-
         let _ = out.flush();
 
         exit.write(AppExit::Success);
+        return;
     }
     if !death_reader.is_empty() {
         let _ = execute!(io::stdout(), terminal::Clear(terminal::ClearType::All));
@@ -238,10 +238,10 @@ fn render(
             out,
             "      \\/_/    \\/_____/\\/_____/     \\/___/   \\/_____/\\/_____/\\/___/ \r\n"
         );
-
         let _ = out.flush();
 
         exit.write(AppExit::Success);
+        return;
     }
 
     let mut buffer = vec![vec!["  "; C_GRID_SIZE.x as usize]; C_GRID_SIZE.y as usize];
